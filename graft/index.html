@@ -781,182 +781,157 @@
 <script>
 (function(){
   var AGENTS = {
-    blueprint: { name:'Blueprint', cls:'ga-blueprint', label:'label-blueprint', emoji:'📐' },
-    sketch:    { name:'Sketch',    cls:'ga-sketch',    label:'label-sketch',    emoji:'🎨' },
-    quote:     { name:'Quote',     cls:'ga-quote',     label:'label-quote',     emoji:'💰' },
+    blueprint: { name:'Blueprint', av:'📐', cls:'ga-blueprint', lbl:'label-blueprint' },
+    sketch:    { name:'Sketch',    av:'🎨', cls:'ga-sketch',    lbl:'label-sketch'    },
+    quote:     { name:'Quote',     av:'💰', cls:'ga-quote',     lbl:'label-quote'     },
   };
 
-  var t = '09:41';
-  function nextTime(){ var h=9,m=41+Math.floor(Math.random()*2+1); if(m>=60){m-=60;h++;} return h+':'+(m<10?'0'+m:m); }
-
   var SCRIPT = [
-    {r:'user', t:"Right, fitted wardrobe for the master bedroom. Alcove, floor to ceiling. About two one high, two doors, mirrored sliding, white MDF."},
-    {r:'agent', a:'blueprint', t:"On it. How wide is the alcove? And what's she after inside — shelves, hanging rail, drawers?", d:1400},
+    {r:'user', t:"Right, fitted wardrobe for the master bedroom. Alcove, floor to ceiling — about two one high. Two doors, mirrored sliding, white MDF."},
+    {r:'ai', a:'blueprint', t:"On it. How wide is the alcove? And what's she after inside — shelves, hanging rail, drawers?", d:1400},
     {r:'user', t:"One eight wide, six hundred deep. Three shelves, soft-close. Client's Mrs Johnson."},
-    {r:'agent', a:'blueprint', t:"Got it. Mirrored sliding, soft-close, three adjustable shelves — I'll pass that to Sketch now.", d:1300},
-    {r:'agent', a:'sketch', t:"Here's how it looks in the room 👇", d:2000, card:'render'},
-    {r:'agent', a:'sketch', t:"Design changes by voice — just say what she wants different.", d:700},
+    {r:'ai', a:'blueprint', t:"Got it — passing to Sketch now.", d:1200},
+    {r:'ai', a:'sketch', t:"Here's how it looks in the room 👇", d:2000, card:'render'},
+    {r:'ai', a:'sketch', t:"Design changes by voice — just say what she wants different.", d:600},
     {r:'user', t:"She loves it. Can we get a quote?"},
-    {r:'agent', a:'quote', t:"Already on it — checking Howdens and Screwfix for live prices… 👇", d:1500, card:'quote'},
-    {r:'agent', a:'quote', t:"PDF is ready to send before you reach the end of the street.", d:600},
-    {r:'user', t:"Actually she's changed her mind — wants painted shaker doors instead of mirrors. Farrow and Ball."},
-    {r:'agent', a:'blueprint', t:"No problem. Switching to painted shaker, Farrow & Ball Mole's Breath. Telling Sketch and Quote now.", d:1300},
-    {r:'agent', a:'sketch', t:"Render updated — door style changed.", d:1800, card:'render2'},
-    {r:'agent', a:'quote', t:"Revised quote: £1,284 inc VAT — up £228 for the shaker doors and extra day. New PDF ready. 📄", d:1200},
+    {r:'ai', a:'quote', t:"Already checking Howdens and Screwfix for live prices… 👇", d:1500, card:'quote'},
+    {r:'ai', a:'quote', t:"PDF ready to send before you reach the end of the street.", d:500},
+    {r:'user', t:"Actually she wants painted shaker doors — Farrow and Ball."},
+    {r:'ai', a:'blueprint', t:"Switching to painted shaker, F&B Mole's Breath. Telling Sketch and Quote.", d:1200},
+    {r:'ai', a:'sketch', t:"Render updated with shaker doors.", d:1800, card:'render'},
+    {r:'ai', a:'quote', t:"Revised quote: £1,284 inc VAT — up £228. New PDF ready. 📄", d:1100},
   ];
 
-  var msgBox, typingEl, typingNameEl, step=0, running=false, lastAgent=null;
+  var msgBox, typingEl, typingNameEl;
+  var step = 0, running = false, lastAgent = null;
+  var mins = 41;
+
+  function ts(){ mins++; return '09:' + (mins < 10 ? '0'+mins : mins); }
 
   function init(){
     msgBox = document.getElementById('chat-msgs');
     typingEl = document.getElementById('typing-indicator');
     typingNameEl = document.getElementById('typing-name');
-    msgBox.appendChild(typingEl); // keep at end
   }
 
   window.startChat = function(){
     if(!msgBox) init();
-    // Clear all messages except date + typing
-    var nodes = Array.from(msgBox.children);
-    nodes.forEach(function(n){
-      if(!n.classList.contains('chat-date') && n.id !== 'typing-indicator') n.remove();
+    if(running) return;
+    // Clear old messages (keep date + typing indicator)
+    var prompt = document.getElementById('chat-start-prompt');
+    if(prompt) prompt.style.display = 'none';
+    Array.from(msgBox.children).forEach(function(n){
+      if(n.id !== 'typing-indicator' && !n.classList.contains('chat-date')) n.remove();
     });
+    msgBox.appendChild(typingEl);
     typingEl.classList.remove('show');
-    document.getElementById('chat-replay-btn').style.display='none';
-    lastAgent=null; step=0; running=true;
-    setTimeout(run, 600);
+    document.getElementById('chat-replay-btn').style.display = 'none';
+    step = 0; lastAgent = null; mins = 41; running = true;
+    setTimeout(tick, 500);
   };
 
-  function run(){
+  function tick(){
     if(step >= SCRIPT.length){
       typingEl.classList.remove('show');
-      document.getElementById('chat-replay-btn').style.display='inline-block';
-      running=false; return;
+      document.getElementById('chat-replay-btn').style.display = 'inline-block';
+      running = false;
+      return;
     }
     var s = SCRIPT[step++];
-    if(s.r === 'agent'){
+    if(s.r === 'ai'){
+      // show typing
       var ag = AGENTS[s.a];
-      typingEl.classList.add('show');
-      // update avatar
       typingEl.querySelector('.agent-av').className = 'agent-av ' + ag.cls;
-      typingEl.querySelector('.agent-av').textContent = ag.emoji;
+      typingEl.querySelector('.agent-av').textContent = ag.av;
       typingNameEl.textContent = ag.name + ' is typing…';
+      typingEl.classList.add('show');
       msgBox.appendChild(typingEl);
-      scrollBottom();
+      msgBox.scrollTop = msgBox.scrollHeight;
       setTimeout(function(){
         typingEl.classList.remove('show');
-        addAgentMsg(s, ag, function(){ setTimeout(run, s.card ? 800 : 500); });
+        insertMsg(s, ag);
+        setTimeout(tick, s.card ? 900 : 450);
       }, s.d || 1300);
     } else {
-      addUserMsg(s, function(){ setTimeout(run, 300); });
+      // user: show voice animation then message
+      voiceAnim(function(){
+        insertUserMsg(s);
+        setTimeout(tick, 350);
+      });
     }
   }
 
-  function addUserMsg(s, cb){
-    // Show voice recording animation first
-    showVoice(function(){
-      _addUserMsg(s, cb);
-    });
-    return;
-  }
-  function _addUserMsg(s, cb){
-    lastAgent = null;
-    var row = make('div','msg-row user');
-    var bRow = make('div','bubble-row');
-    var bub = make('div','bubble');
-    bub.innerHTML = s.t + '<span class="msg-time">'+nextTime()+'</span>';
-    bRow.appendChild(bub);
-    row.appendChild(bRow);
+  function insertUserMsg(s){
+    var row = el('div','msg-row user');
+    var brow = el('div','bubble-row');
+    var bub = el('div','bubble');
+    bub.innerHTML = s.t + '<span class="msg-time">'+ts()+'</span>';
+    brow.appendChild(bub);
+    row.appendChild(brow);
     msgBox.insertBefore(row, typingEl);
-    raf(function(){ row.classList.add('vis'); scrollBottom(); if(cb) setTimeout(cb,250); });
+    raf(function(){ row.classList.add('vis'); msgBox.scrollTop = msgBox.scrollHeight; });
   }
 
-  function addAgentMsg(s, ag, cb){
-    var row = make('div','msg-row agent');
-    // Show name label only when agent changes
+  function insertMsg(s, ag){
+    var row = el('div','msg-row agent');
+    // name label when agent changes
     if(lastAgent !== s.a){
-      var lbl = make('div','agent-label '+ag.label);
+      var lbl = el('div','agent-label ' + ag.lbl);
       lbl.textContent = ag.name;
       row.appendChild(lbl);
     }
     lastAgent = s.a;
-    var bRow = make('div','bubble-row');
-    var av = make('div','agent-av '+ag.cls);
-    av.textContent = ag.emoji;
-    var bub = make('div','bubble');
-
-    if(s.card === 'render' || s.card === 'render2'){
-      bub.innerHTML = s.t + '<span class="msg-time">'+nextTime()+'</span>';
-      bub.appendChild(buildRenderCard());
-    } else if(s.card === 'quote'){
-      bub.innerHTML = s.t + '<span class="msg-time">'+nextTime()+'</span>';
-      bub.appendChild(buildQuoteCard());
-    } else {
-      bub.innerHTML = s.t + '<span class="msg-time">'+nextTime()+'</span>';
-    }
-
-    bRow.appendChild(av);
-    bRow.appendChild(bub);
-    row.appendChild(bRow);
+    var brow = el('div','bubble-row');
+    var av = el('div','agent-av ' + ag.cls);
+    av.textContent = ag.av;
+    var bub = el('div','bubble');
+    bub.innerHTML = s.t + '<span class="msg-time">'+ts()+'</span>';
+    if(s.card) bub.appendChild(s.card === 'quote' ? quoteCard() : renderCard());
+    brow.appendChild(av);
+    brow.appendChild(bub);
+    row.appendChild(brow);
     msgBox.insertBefore(row, typingEl);
-    raf(function(){ row.classList.add('vis'); scrollBottom(); if(cb) setTimeout(cb,250); });
+    raf(function(){ row.classList.add('vis'); msgBox.scrollTop = msgBox.scrollHeight; });
   }
 
-  function buildRenderCard(){
-    var wrap = make('div','render-card');
-    wrap.innerHTML = '<svg viewBox="0 0 280 160" xmlns="http://www.w3.org/2000/svg">' +
-      '<defs>' +
-      '<linearGradient id="rcW" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d4cfc8"/><stop offset="100%" stop-color="#b8b4ad"/></linearGradient>' +
-      '<linearGradient id="rcF" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8B7355"/><stop offset="100%" stop-color="#6B5A3E"/></linearGradient>' +
-      '<linearGradient id="rcM" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#c8dce8" stop-opacity="0.9"/><stop offset="50%" stop-color="#e8f0f4" stop-opacity="0.7"/><stop offset="100%" stop-color="#b0c8d8" stop-opacity="0.8"/></linearGradient>' +
-      '</defs>' +
-      '<rect x="0" y="0" width="280" height="128" fill="url(#rcW)"/>' +
-      '<rect x="0" y="128" width="280" height="32" fill="url(#rcF)"/>' +
-      '<rect x="0" y="124" width="280" height="6" fill="#ccc8c0"/>' +
-      '<rect x="30" y="14" width="220" height="114" fill="#F0F0F0" stroke="#C4C4C4" stroke-width="1"/>' +
-      '<rect x="33" y="17" width="106" height="108" fill="url(#rcM)" stroke="#B8B8B8" stroke-width="1" rx="1"/>' +
-      '<polygon points="33,17 66,17 50,55 33,46" fill="white" opacity="0.2"/>' +
-      '<rect x="141" y="17" width="106" height="108" fill="url(#rcM)" stroke="#B8B8B8" stroke-width="1" rx="1"/>' +
-      '<polygon points="239,17 206,17 222,55 239,46" fill="white" opacity="0.2"/>' +
-      '<rect x="138" y="14" width="4" height="114" fill="#C8C8C8"/>' +
-      '<rect x="38" y="128" width="204" height="8" fill="#D8D8D8" rx="1"/>' +
-      '<text x="86" y="76" fill="rgba(0,0,0,0.25)" font-size="9" font-family="sans-serif" text-anchor="middle">Mirror</text>' +
-      '<text x="194" y="76" fill="rgba(0,0,0,0.25)" font-size="9" font-family="sans-serif" text-anchor="middle">Mirror</text>' +
-      '<text x="140" y="148" fill="#999" font-size="8" font-family="monospace" text-anchor="middle">2100 × 1800 × 600mm · White MDF</text>' +
-      '</svg>' +
-      '<div class="render-card-footer">' +
-      '<span class="render-card-label">Sketch · tap to expand</span>' +
-      '<div class="render-card-actions">' +
-      '<button class="rc-btn active">Front</button>' +
-      '<button class="rc-btn">Open</button>' +
-      '<button class="rc-btn">Approve ✓</button>' +
-      '</div></div>';
+  function voiceAnim(cb){
+    var inputBox = document.querySelector('.chat-input-box');
+    var voiceRec = document.getElementById('voice-rec');
+    var sendBtn  = document.querySelector('.chat-send-btn');
+    if(!voiceRec || !inputBox){ cb(); return; }
+    inputBox.classList.add('hidden');
+    voiceRec.classList.add('show');
+    if(sendBtn){ sendBtn.classList.add('recording'); sendBtn.textContent = '🎙️'; }
+    setTimeout(function(){
+      voiceRec.classList.remove('show');
+      inputBox.classList.remove('hidden');
+      if(sendBtn){ sendBtn.classList.remove('recording'); }
+      cb();
+    }, 1200);
+  }
+
+  function renderCard(){
+    var wrap = el('div','render-card');
+    wrap.innerHTML = '<svg viewBox="0 0 280 160" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="rcW" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d4cfc8"/><stop offset="100%" stop-color="#b8b4ad"/></linearGradient><linearGradient id="rcF" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8B7355"/><stop offset="100%" stop-color="#6B5A3E"/></linearGradient><linearGradient id="rcM" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#c8dce8" stop-opacity="0.9"/><stop offset="50%" stop-color="#e8f0f4" stop-opacity="0.7"/><stop offset="100%" stop-color="#b0c8d8" stop-opacity="0.8"/></linearGradient></defs><rect x="0" y="0" width="280" height="128" fill="url(#rcW)"/><rect x="0" y="128" width="280" height="32" fill="url(#rcF)"/><rect x="0" y="124" width="280" height="6" fill="#ccc8c0"/><rect x="30" y="14" width="220" height="114" fill="#F0F0F0" stroke="#C4C4C4" stroke-width="1"/><rect x="33" y="17" width="106" height="108" fill="url(#rcM)" stroke="#B8B8B8" stroke-width="1" rx="1"/><polygon points="33,17 66,17 50,55 33,46" fill="white" opacity="0.2"/><rect x="141" y="17" width="106" height="108" fill="url(#rcM)" stroke="#B8B8B8" stroke-width="1" rx="1"/><polygon points="239,17 206,17 222,55 239,46" fill="white" opacity="0.2"/><rect x="138" y="14" width="4" height="114" fill="#C8C8C8"/><rect x="38" y="128" width="204" height="8" fill="#D8D8D8" rx="1"/><text x="86" y="76" fill="rgba(0,0,0,0.25)" font-size="9" font-family="sans-serif" text-anchor="middle">Mirror</text><text x="194" y="76" fill="rgba(0,0,0,0.25)" font-size="9" font-family="sans-serif" text-anchor="middle">Mirror</text><text x="140" y="150" fill="#999" font-size="8" font-family="monospace" text-anchor="middle">2100 × 1800 × 600mm · White MDF</text></svg><div class="render-card-footer"><span class="render-card-label">Sketch · tap to expand</span><div class="render-card-actions"><button class="rc-btn active">Front</button><button class="rc-btn">Open</button><button class="rc-btn">Approve ✓</button></div></div>';
     return wrap;
   }
 
-  function buildQuoteCard(){
-    var wrap = make('div','quote-card');
-    wrap.innerHTML =
-      '<div class="qc-head"><div class="qc-biz">M. Fletcher Joinery</div><div class="qc-ref">QT-2024-089</div></div>' +
-      '<div class="qc-for">For: Mrs R. Johnson · Master Bedroom</div>' +
-      '<div class="qc-line"><span>Materials</span><span>£460</span></div>' +
-      '<div class="qc-line"><span>Labour (1.5 days)</span><span>£420</span></div>' +
-      '<div class="qc-line"><span>VAT</span><span>£176</span></div>' +
-      '<div class="qc-total"><span>Total</span><span>£1,056</span></div>' +
-      '<div class="qc-actions">' +
-      '<button class="qc-btn qc-btn-send">Send to client</button>' +
-      '<button class="qc-btn qc-btn-edit">Edit</button>' +
-      '</div>';
+  function quoteCard(){
+    var wrap = el('div','quote-card');
+    wrap.innerHTML = '<div class="qc-head"><div class="qc-biz">M. Fletcher Joinery</div><div class="qc-ref">QT-2024-089</div></div><div class="qc-for">For: Mrs R. Johnson · Master Bedroom</div><div class="qc-line"><span>Materials</span><span>£460</span></div><div class="qc-line"><span>Labour (1.5 days)</span><span>£420</span></div><div class="qc-line"><span>VAT</span><span>£176</span></div><div class="qc-total"><span>Total</span><span>£1,056</span></div><div class="qc-actions"><button class="qc-btn qc-btn-send">Send to client</button><button class="qc-btn qc-btn-edit">Edit</button></div>';
     return wrap;
   }
 
-  function make(tag, cls){ var el=document.createElement(tag); el.className=cls; return el; }
+  function el(tag, cls){ var e = document.createElement(tag); e.className = cls; return e; }
   function raf(fn){ requestAnimationFrame(function(){ requestAnimationFrame(fn); }); }
-  function scrollBottom(){ msgBox.scrollTop = msgBox.scrollHeight; }
 
-  // Auto-start removed — user taps Play button
+  window.setView = function(btn, v){
+    document.querySelectorAll('.render-btn, .rc-btn').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+  };
+
+  document.addEventListener('DOMContentLoaded', init);
 })();
 </script>
-
 </body>
 </html>
