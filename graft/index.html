@@ -309,28 +309,6 @@
       .hero h1 { letter-spacing: -2px; }
     }
 
-    /* HERO IMAGE */
-    .hero-image-wrap {
-      width: 100%;
-      max-height: 440px;
-      overflow: hidden;
-      position: relative;
-    }
-    .hero-image-wrap img {
-      width: 100%;
-      height: 440px;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-    }
-    .hero-image-wrap::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 160px;
-      background: linear-gradient(transparent, var(--dark));
-    }
-
     /* ═══ PIPELINE DEMO ═══ */
     .demo-heading {
       font-size: clamp(26px,6vw,40px);
@@ -519,82 +497,6 @@
   <div class="logo">Graft</div>
   <a href="#" class="nav-pill">Get early access</a>
 </nav>
-<div class="hero-image-wrap">
-  <img src="hero.png" alt="Carpenter at work" />
-</div>
-
-<section class="hero">
-  <div class="eyebrow">For people who build things</div>
-  <h1>Put in the<br /><span class="accent">Graft.</span><br />Win the job.</h1>
-  <p>Graft gives every independent tradesperson a designer, an on-site visualiser, and an estimator — voice-driven, always on, and available from day one. So the best work wins.</p>
-  <div class="cta-group">
-    <a href="https://#" class="btn-primary">Get early access →</a>
-    <a href="#team" class="btn-secondary">See how it works</a>
-  </div>
-</section>
-
-<section class="manifesto">
-  <div class="inner">
-    <h2>The best tradesperson<br />rarely wins the job.</h2>
-    <p>There are hundreds of thousands of skilled independent tradespeople in the UK. Many do better work than the large firms they compete against. But when a homeowner is choosing who to trust with their home, they see <strong>polished proposals from the big firm</strong> — and a rough quote from you.<br /><br />
-    They choose the proposal. Every time. Not because of the quality. Because of the presentation.<br /><br />
-    <strong>Graft ends that.</strong></p>
-  </div>
-</section>
-
-<section class="meaning">
-  <h2>/ ɡrɑːft /</h2>
-
-  <div class="definition">
-    <div class="def-word">Graft</div>
-    <div class="def-pos">noun, verb — British English</div>
-    <div class="def-text"><strong style="color:var(--text)">1.</strong> Hard work done over time. <em>"He put in the graft."</em></div>
-  </div>
-
-  <div class="definition">
-    <div class="def-word">Graft</div>
-    <div class="def-pos">noun — Horticulture, Surgery</div>
-    <div class="def-text"><strong style="color:var(--text)">2.</strong> To join something to something else so it grows as one. To make it part of the whole.</div>
-  </div>
-
-  <div class="definition">
-    <div class="def-word">Graft</div>
-    <div class="def-pos">noun — Carpentry & Joinery</div>
-    <div class="def-text"><strong style="color:var(--text)">3.</strong> The shape cut into a rafter or spar. The joint that holds structure together.</div>
-  </div>
-
-  <p style="font-size:15px;color:var(--muted);margin-top:32px;line-height:1.7;">A word with roots in the trade. A name that means something — hard work, craft, and the joining of things to make something better. That's what we built.</p>
-</section>
-
-<section class="team" id="team">
-  <div class="section-label">Your team</div>
-  <h2>Three experts.<br />Voice-driven.<br /><em>Day one.</em></h2>
-
-  <div class="card card-blue">
-    <div class="card-number">01 / 03</div>
-    <h3>Blueprint</h3>
-    <div class="role">Product Designer — knows how you work</div>
-    <p>One conversation. Blueprint learns your materials, standards, day rate, and the jobs you love — then builds Job Type templates that capture your expertise permanently. Every quote and client conversation is shaped by how <em>you</em> do it best.</p>
-    <div class="result">💬 Your knowledge, encoded once — used on every job forever.</div>
-  </div>
-
-  <div class="card card-purple">
-    <div class="card-number">02 / 03</div>
-    <h3>Sketch</h3>
-    <div class="role">OnSite Designer — closes jobs while you're still in the room</div>
-    <p>Used with the customer present. Speak the measurements, describe what they want — Sketch generates a visual render in their actual space, on their phone, in real time. Design changes by voice. Digital sign-off before you leave.</p>
-    <div class="result">🎨 Sale made before a single piece of wood is cut.</div>
-  </div>
-
-  <div class="card card-green">
-    <div class="card-number">03 / 03</div>
-    <h3>Quote</h3>
-    <div class="role">Estimator — professional quote before you've left the street</div>
-    <p>The moment design is agreed, Quote calculates materials, checks live merchant prices, applies your margin, and produces a branded quote document — ready to send within minutes. Organised shopping list by merchant. And it learns: after five garden rooms, quotes calibrate against actuals.</p>
-    <div class="result">📄 Look like a firm. Work like a sole trader.</div>
-  </div>
-</section>
-
 <!-- ═══════ FULL PIPELINE DEMO ═══════ -->
 <section class="demo-section" id="demo">
   <div class="section-label">See it in action</div>
@@ -853,6 +755,80 @@
     </div>
   </div>
 </section>
+
+<section class="hero">
+  <div class="eyebrow">For people who build things</div>
+  <h1>Put in the<br /><span class="accent">Graft.</span><br />Win the job.</h1>
+  <p>Graft gives every independent tradesperson a designer, an on-site visualiser, and an estimator — voice-driven, always on, and available from day one. So the best work wins.</p>
+  <div class="cta-group">
+    <a href="https://#" class="btn-primary">Get early access →</a>
+    <a href="#team" class="btn-secondary">See how it works</a>
+  </div>
+</section>
+
+<section class="manifesto">
+  <div class="inner">
+    <h2>The best tradesperson<br />rarely wins the job.</h2>
+    <p>There are hundreds of thousands of skilled independent tradespeople in the UK. Many do better work than the large firms they compete against. But when a homeowner is choosing who to trust with their home, they see <strong>polished proposals from the big firm</strong> — and a rough quote from you.<br /><br />
+    They choose the proposal. Every time. Not because of the quality. Because of the presentation.<br /><br />
+    <strong>Graft ends that.</strong></p>
+  </div>
+</section>
+
+<section class="meaning">
+  <h2>/ ɡrɑːft /</h2>
+
+  <div class="definition">
+    <div class="def-word">Graft</div>
+    <div class="def-pos">noun, verb — British English</div>
+    <div class="def-text"><strong style="color:var(--text)">1.</strong> Hard work done over time. <em>"He put in the graft."</em></div>
+  </div>
+
+  <div class="definition">
+    <div class="def-word">Graft</div>
+    <div class="def-pos">noun — Horticulture, Surgery</div>
+    <div class="def-text"><strong style="color:var(--text)">2.</strong> To join something to something else so it grows as one. To make it part of the whole.</div>
+  </div>
+
+  <div class="definition">
+    <div class="def-word">Graft</div>
+    <div class="def-pos">noun — Carpentry & Joinery</div>
+    <div class="def-text"><strong style="color:var(--text)">3.</strong> The shape cut into a rafter or spar. The joint that holds structure together.</div>
+  </div>
+
+  <p style="font-size:15px;color:var(--muted);margin-top:32px;line-height:1.7;">A word with roots in the trade. A name that means something — hard work, craft, and the joining of things to make something better. That's what we built.</p>
+</section>
+
+<section class="team" id="team">
+  <div class="section-label">Your team</div>
+  <h2>Three experts.<br />Voice-driven.<br /><em>Day one.</em></h2>
+
+  <div class="card card-blue">
+    <div class="card-number">01 / 03</div>
+    <h3>Blueprint</h3>
+    <div class="role">Product Designer — knows how you work</div>
+    <p>One conversation. Blueprint learns your materials, standards, day rate, and the jobs you love — then builds Job Type templates that capture your expertise permanently. Every quote and client conversation is shaped by how <em>you</em> do it best.</p>
+    <div class="result">💬 Your knowledge, encoded once — used on every job forever.</div>
+  </div>
+
+  <div class="card card-purple">
+    <div class="card-number">02 / 03</div>
+    <h3>Sketch</h3>
+    <div class="role">OnSite Designer — closes jobs while you're still in the room</div>
+    <p>Used with the customer present. Speak the measurements, describe what they want — Sketch generates a visual render in their actual space, on their phone, in real time. Design changes by voice. Digital sign-off before you leave.</p>
+    <div class="result">🎨 Sale made before a single piece of wood is cut.</div>
+  </div>
+
+  <div class="card card-green">
+    <div class="card-number">03 / 03</div>
+    <h3>Quote</h3>
+    <div class="role">Estimator — professional quote before you've left the street</div>
+    <p>The moment design is agreed, Quote calculates materials, checks live merchant prices, applies your margin, and produces a branded quote document — ready to send within minutes. Organised shopping list by merchant. And it learns: after five garden rooms, quotes calibrate against actuals.</p>
+    <div class="result">📄 Look like a firm. Work like a sole trader.</div>
+  </div>
+</section>
+
+
 
 <section class="closer">
   <h2>Do the graft.<br />Win more jobs.</h2>

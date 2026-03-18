@@ -313,32 +313,6 @@
       .why-grid { grid-template-columns: 1fr; }
     }
 
-    /* HERO IMAGE */
-    .hero-image-wrap {
-      width: 100%;
-      max-height: 440px;
-      overflow: hidden;
-      position: relative;
-    }
-    .hero-image-wrap img {
-      width: 100%;
-      height: 440px;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-    }
-    .hero-image-wrap::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 160px;
-      background: linear-gradient(transparent, var(--dark));
-    }
-
-    .hero-image-wrap::after {
-      background: linear-gradient(transparent, #0F1117);
-    }
-
     /* ═══ PIPELINE DEMO ═══ */
     .demo-heading {
       font-size: clamp(26px,6vw,40px);
@@ -527,126 +501,6 @@
   <div class="logo">Trades<span>App</span></div>
   <a href="#" class="nav-pill">Get early access →</a>
 </nav>
-<div class="hero-image-wrap">
-  <img src="hero.png" alt="Tradesperson on site" />
-</div>
-
-<section class="hero">
-  <div class="eyebrow">📱 Built for the tools generation</div>
-  <h1>Your professional team.<br /><em>Always on.</em></h1>
-  <p>Independent tradespeople do the best work. They just never had the team to win the jobs. TradesApp changes that — a voice-first AI platform giving every sole trader a designer, a visualiser, and an estimator.</p>
-  <div class="cta-group">
-    <a href="#" class="btn-primary">Get early access →</a>
-    <a href="#team" class="btn-secondary">Meet the team</a>
-  </div>
-</section>
-
-<section class="problem-band">
-  <div class="inner">
-    <h2>The big firm wins the job.<br />The sole trader did better work.</h2>
-    <p>Large firms have design software, 3D renders, and dedicated estimators. The independent tradesperson has <strong>a tape measure, a notebook, and a spreadsheet a mate built for them.</strong><br /><br />
-    Clients choose the polished PDF. The better tradesperson loses — not on quality, but on presentation. <strong>TradesApp ends that.</strong></p>
-  </div>
-</section>
-
-<section class="section" id="team">
-  <div class="section-label">Meet your new team</div>
-  <h2>Three specialists.<br />Voice-driven.<br />Ready from day one.</h2>
-
-  <div class="team-card">
-    <div class="team-card-header">
-      <div class="avatar avatar-blue">📐</div>
-      <div class="team-card-title">
-        <h3>Blueprint</h3>
-        <div class="role">Product Designer · Knows how you work</div>
-      </div>
-    </div>
-    <p>One voice conversation. Blueprint learns your preferred materials, quality standards, day rate, and the jobs you love — then builds intelligent Job Type templates that capture exactly how <em>you</em> approach a media unit, a fitted wardrobe, or a garden room. Every quote and every conversation from that point forward is shaped by your expertise.</p>
-    <div class="tag-row">
-      <span class="tag">Voice onboarding</span>
-      <span class="tag">Job templates</span>
-      <span class="tag">Your standards, encoded</span>
-    </div>
-  </div>
-
-  <div class="team-card">
-    <div class="team-card-header">
-      <div class="avatar avatar-purple">🎨</div>
-      <div class="team-card-title">
-        <h3>Sketch</h3>
-        <div class="role">OnSite Designer · Closes jobs in the room</div>
-      </div>
-    </div>
-    <p>Used with the customer present. Speak the measurements, describe what they want — Sketch generates a visual render of the finished piece in their actual space, on their phone, in real time. Design changes happen by voice. By the time you leave the house, the client has seen their finished job, agreed on the design, and signed off digitally. <em>Sale made before a single piece of wood is cut.</em></p>
-    <div class="tag-row">
-      <span class="tag">Live renders</span>
-      <span class="tag">Voice-driven changes</span>
-      <span class="tag">Digital sign-off</span>
-    </div>
-  </div>
-
-  <div class="team-card">
-    <div class="team-card-header">
-      <div class="avatar avatar-green">💰</div>
-      <div class="team-card-title">
-        <h3>Quote</h3>
-        <div class="role">Estimator · Professional quote before you hit the road</div>
-      </div>
-    </div>
-    <p>The moment design is agreed, Quote calculates materials quantities, checks live prices from your preferred merchants, applies your day rate and margin, and produces a professional branded quote — ready to send before you've reached the end of the customer's street. It also generates a materials shopping list organised by merchant, showing where each item is cheapest. And it learns: after five garden rooms, quotes are calibrated against actuals, not guesses.</p>
-    <div class="tag-row">
-      <span class="tag">Live merchant prices</span>
-      <span class="tag">Branded PDF</span>
-      <span class="tag">Gets smarter over time</span>
-    </div>
-  </div>
-</section>
-
-<section class="stats">
-  <div class="stats-grid">
-    <div>
-      <div class="stat-number">100k+</div>
-      <div class="stat-label">Independent tradespeople in the UK who deserve better</div>
-    </div>
-    <div>
-      <div class="stat-number">£0</div>
-      <div class="stat-label">Design software budget most sole traders have</div>
-    </div>
-    <div>
-      <div class="stat-number">Day 1</div>
-      <div class="stat-label">Your professional team is ready from the moment you sign up</div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="section-label">Why TradesApp</div>
-  <h2>Built for how you<br />actually work.</h2>
-  <div class="why-grid">
-    <div class="why-item">
-      <div class="why-icon">🎙️</div>
-      <h4>Voice-first</h4>
-      <p>Designed for people who think on their feet and work with their hands — not at a desk.</p>
-    </div>
-    <div class="why-item">
-      <div class="why-icon">📱</div>
-      <h4>Phone native</h4>
-      <p>Everything works from your phone. No laptop required, no learning curve.</p>
-    </div>
-    <div class="why-item">
-      <div class="why-icon">⚡</div>
-      <h4>Instant quotes</h4>
-      <p>From site survey to professional quote in minutes, not hours. Every time.</p>
-    </div>
-    <div class="why-item">
-      <div class="why-icon">🎯</div>
-      <h4>Wins more jobs</h4>
-      <p>Compete with the big firms on presentation — while outcompeting them on quality.</p>
-    </div>
-  </div>
-</section>
-
-
 <!-- ═══════ FULL PIPELINE DEMO ═══════ -->
 <section class="demo-section" id="demo">
   <div class="section-label">See it in action</div>
@@ -905,6 +759,124 @@
     </div>
   </div>
 </section>
+
+<section class="hero">
+  <div class="eyebrow">📱 Built for the tools generation</div>
+  <h1>Your professional team.<br /><em>Always on.</em></h1>
+  <p>Independent tradespeople do the best work. They just never had the team to win the jobs. TradesApp changes that — a voice-first AI platform giving every sole trader a designer, a visualiser, and an estimator.</p>
+  <div class="cta-group">
+    <a href="#" class="btn-primary">Get early access →</a>
+    <a href="#team" class="btn-secondary">Meet the team</a>
+  </div>
+</section>
+
+<section class="problem-band">
+  <div class="inner">
+    <h2>The big firm wins the job.<br />The sole trader did better work.</h2>
+    <p>Large firms have design software, 3D renders, and dedicated estimators. The independent tradesperson has <strong>a tape measure, a notebook, and a spreadsheet a mate built for them.</strong><br /><br />
+    Clients choose the polished PDF. The better tradesperson loses — not on quality, but on presentation. <strong>TradesApp ends that.</strong></p>
+  </div>
+</section>
+
+<section class="section" id="team">
+  <div class="section-label">Meet your new team</div>
+  <h2>Three specialists.<br />Voice-driven.<br />Ready from day one.</h2>
+
+  <div class="team-card">
+    <div class="team-card-header">
+      <div class="avatar avatar-blue">📐</div>
+      <div class="team-card-title">
+        <h3>Blueprint</h3>
+        <div class="role">Product Designer · Knows how you work</div>
+      </div>
+    </div>
+    <p>One voice conversation. Blueprint learns your preferred materials, quality standards, day rate, and the jobs you love — then builds intelligent Job Type templates that capture exactly how <em>you</em> approach a media unit, a fitted wardrobe, or a garden room. Every quote and every conversation from that point forward is shaped by your expertise.</p>
+    <div class="tag-row">
+      <span class="tag">Voice onboarding</span>
+      <span class="tag">Job templates</span>
+      <span class="tag">Your standards, encoded</span>
+    </div>
+  </div>
+
+  <div class="team-card">
+    <div class="team-card-header">
+      <div class="avatar avatar-purple">🎨</div>
+      <div class="team-card-title">
+        <h3>Sketch</h3>
+        <div class="role">OnSite Designer · Closes jobs in the room</div>
+      </div>
+    </div>
+    <p>Used with the customer present. Speak the measurements, describe what they want — Sketch generates a visual render of the finished piece in their actual space, on their phone, in real time. Design changes happen by voice. By the time you leave the house, the client has seen their finished job, agreed on the design, and signed off digitally. <em>Sale made before a single piece of wood is cut.</em></p>
+    <div class="tag-row">
+      <span class="tag">Live renders</span>
+      <span class="tag">Voice-driven changes</span>
+      <span class="tag">Digital sign-off</span>
+    </div>
+  </div>
+
+  <div class="team-card">
+    <div class="team-card-header">
+      <div class="avatar avatar-green">💰</div>
+      <div class="team-card-title">
+        <h3>Quote</h3>
+        <div class="role">Estimator · Professional quote before you hit the road</div>
+      </div>
+    </div>
+    <p>The moment design is agreed, Quote calculates materials quantities, checks live prices from your preferred merchants, applies your day rate and margin, and produces a professional branded quote — ready to send before you've reached the end of the customer's street. It also generates a materials shopping list organised by merchant, showing where each item is cheapest. And it learns: after five garden rooms, quotes are calibrated against actuals, not guesses.</p>
+    <div class="tag-row">
+      <span class="tag">Live merchant prices</span>
+      <span class="tag">Branded PDF</span>
+      <span class="tag">Gets smarter over time</span>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stats-grid">
+    <div>
+      <div class="stat-number">100k+</div>
+      <div class="stat-label">Independent tradespeople in the UK who deserve better</div>
+    </div>
+    <div>
+      <div class="stat-number">£0</div>
+      <div class="stat-label">Design software budget most sole traders have</div>
+    </div>
+    <div>
+      <div class="stat-number">Day 1</div>
+      <div class="stat-label">Your professional team is ready from the moment you sign up</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-label">Why TradesApp</div>
+  <h2>Built for how you<br />actually work.</h2>
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-icon">🎙️</div>
+      <h4>Voice-first</h4>
+      <p>Designed for people who think on their feet and work with their hands — not at a desk.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">📱</div>
+      <h4>Phone native</h4>
+      <p>Everything works from your phone. No laptop required, no learning curve.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">⚡</div>
+      <h4>Instant quotes</h4>
+      <p>From site survey to professional quote in minutes, not hours. Every time.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">🎯</div>
+      <h4>Wins more jobs</h4>
+      <p>Compete with the big firms on presentation — while outcompeting them on quality.</p>
+    </div>
+  </div>
+</section>
+
+
+
 <footer>
   <span class="logo">Trades<span style="color:var(--brand)">App</span></span>
   <p>Built for independent tradespeople. Starting with carpenters and joiners. Built in London.</p>
