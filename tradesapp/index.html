@@ -313,168 +313,6 @@
       .why-grid { grid-template-columns: 1fr; }
     }
 
-    /* ── CHAT DEMO ── */
-    .demo-section {
-      padding: 72px 24px;
-      max-width: 720px;
-      margin: 0 auto;
-    }
-    .demo-phone {
-      background: #0A0A0A;
-      border: 2px solid #2A2A2A;
-      border-radius: 36px;
-      padding: 16px 12px 24px;
-      max-width: 380px;
-      margin: 0 auto;
-      box-shadow: 0 32px 80px rgba(0,0,0,0.6);
-      position: relative;
-    }
-    .demo-phone::before {
-      content: '';
-      display: block;
-      width: 80px;
-      height: 6px;
-      background: #222;
-      border-radius: 3px;
-      margin: 4px auto 16px;
-    }
-    .demo-bar {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 14px 14px;
-      border-bottom: 1px solid #1A1A1A;
-      margin-bottom: 4px;
-    }
-    .demo-avatar {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      flex-shrink: 0;
-    }
-    .demo-name {
-      font-size: 15px;
-      font-weight: 700;
-      color: #F0F0F0;
-    }
-    .demo-status {
-      font-size: 12px;
-      color: #4CAF50;
-      margin-top: 1px;
-    }
-    .demo-messages {
-      padding: 12px 8px;
-      min-height: 300px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .msg {
-      display: flex;
-      opacity: 0;
-      transform: translateY(8px);
-      transition: opacity 0.35s ease, transform 0.35s ease;
-      max-width: 85%;
-    }
-    .msg.visible { opacity: 1; transform: translateY(0); }
-    .msg.user { align-self: flex-end; flex-direction: row-reverse; }
-    .msg.ai { align-self: flex-start; }
-    .msg-bubble {
-      padding: 10px 13px;
-      border-radius: 18px;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-    .msg.user .msg-bubble {
-      background: var(--brand);
-      color: #000;
-      border-bottom-right-radius: 4px;
-      font-weight: 500;
-    }
-    .msg.ai .msg-bubble {
-      background: #1E1E1E;
-      color: #E0E0E0;
-      border-bottom-left-radius: 4px;
-      border: 1px solid #2A2A2A;
-    }
-    .msg-bubble .ai-name {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--brand);
-      margin-bottom: 4px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .msg-bubble .result-box {
-      margin-top: 8px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 10px;
-      padding: 10px 12px;
-      font-size: 13px;
-    }
-    .msg-bubble .result-box .line {
-      display: flex;
-      justify-content: space-between;
-      padding: 3px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      color: #C0C0C0;
-    }
-    .msg-bubble .result-box .line:last-child { border-bottom: none; }
-    .msg-bubble .result-box .line strong { color: #fff; }
-    .msg-bubble .result-box .total {
-      margin-top: 8px;
-      padding-top: 8px;
-      border-top: 1px solid rgba(255,255,255,0.15);
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--brand);
-      display: flex;
-      justify-content: space-between;
-    }
-    .typing {
-      display: none;
-      align-self: flex-start;
-      padding: 10px 14px;
-      background: #1E1E1E;
-      border: 1px solid #2A2A2A;
-      border-radius: 18px;
-      border-bottom-left-radius: 4px;
-      gap: 4px;
-    }
-    .typing.show { display: flex; }
-    .typing span {
-      width: 6px; height: 6px;
-      background: #666;
-      border-radius: 50%;
-      animation: bounce 1.2s ease infinite;
-    }
-    .typing span:nth-child(2) { animation-delay: 0.2s; }
-    .typing span:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes bounce {
-      0%,60%,100% { transform: translateY(0); }
-      30% { transform: translateY(-5px); background: var(--brand); }
-    }
-    .demo-replay {
-      display: none;
-      width: calc(100% - 32px);
-      margin: 8px 16px 0;
-      padding: 12px;
-      background: transparent;
-      border: 1px solid #2A2A2A;
-      border-radius: 12px;
-      color: var(--muted);
-      font-size: 13px;
-      cursor: pointer;
-      text-align: center;
-    }
-    .demo-replay.show { display: block; }
-    .demo-replay:hover { border-color: var(--brand); color: var(--brand); }
-
     /* HERO IMAGE */
     .hero-image-wrap {
       width: 100%;
@@ -499,6 +337,187 @@
 
     .hero-image-wrap::after {
       background: linear-gradient(transparent, #0F1117);
+    }
+
+    /* ═══ PIPELINE DEMO ═══ */
+    .demo-heading {
+      font-size: clamp(26px,6vw,40px);
+      font-weight:900;
+      letter-spacing:-1.5px;
+      color:var(--white);
+      margin-bottom:32px;
+      line-height:1.1;
+    }
+    .demo-heading em { font-style:normal; color:var(--brand); }
+
+    .pipeline-demo {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .pd-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+      scrollbar-width: none;
+      background: var(--mid);
+    }
+    .pd-tabs::-webkit-scrollbar { display:none; }
+    .pd-tab {
+      padding: 14px 16px;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .pd-tab:hover { color: var(--text); }
+    .pd-tab.active { color: var(--brand); border-bottom-color: var(--brand); }
+
+    .pd-panel { display:none; padding:24px; }
+    .pd-panel.active { display:block; }
+    .pd-step-label {
+      font-size:11px; font-weight:700; text-transform:uppercase;
+      letter-spacing:1.5px; color:var(--brand); margin-bottom:6px;
+    }
+    .pd-panel-title {
+      font-size:18px; font-weight:800; color:var(--white);
+      letter-spacing:-0.5px; margin-bottom:8px;
+    }
+    .pd-panel-desc {
+      font-size:14px; color:var(--muted); line-height:1.7; margin-bottom:20px;
+    }
+
+    /* Chat */
+    .pd-chat { display:flex; flex-direction:column; gap:10px; margin-bottom:20px; min-height:160px; }
+    .pc-msg { display:flex; max-width:88%; opacity:0; transform:translateY(6px); transition:opacity .3s ease, transform .3s ease; }
+    .pc-msg.vis { opacity:1; transform:translateY(0); }
+    .pc-msg.user { align-self:flex-end; flex-direction:row-reverse; }
+    .pc-msg.ai { align-self:flex-start; }
+    .pc-bubble {
+      padding:9px 13px; border-radius:16px; font-size:13.5px; line-height:1.5;
+    }
+    .pc-msg.user .pc-bubble {
+      background:var(--brand); color:#000; font-weight:500;
+      border-bottom-right-radius:3px;
+    }
+    .pc-msg.ai .pc-bubble {
+      background:#252535; color:#ddd; border:1px solid var(--border);
+      border-bottom-left-radius:3px;
+    }
+    .pc-who {
+      font-size:10px; font-weight:700; text-transform:uppercase;
+      letter-spacing:.5px; color:var(--brand); margin-bottom:4px;
+    }
+    .pc-typing {
+      display:none; align-self:flex-start;
+      padding:9px 13px; background:#252535; border:1px solid var(--border);
+      border-radius:16px; border-bottom-left-radius:3px; gap:4px;
+    }
+    .pc-typing.show { display:flex; }
+    .pc-typing span { width:6px; height:6px; background:#555; border-radius:50%; animation:tb 1.2s ease infinite; }
+    .pc-typing span:nth-child(2) { animation-delay:.2s; }
+    .pc-typing span:nth-child(3) { animation-delay:.4s; }
+    @keyframes tb { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-5px);background:var(--brand)} }
+
+    /* Params box */
+    .pd-params {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius:10px; padding:14px; font-size:12px;
+    }
+    .pd-params-label {
+      font-size:10px; font-weight:700; text-transform:uppercase;
+      letter-spacing:1px; color:var(--brand); margin-bottom:10px;
+    }
+    .pd-params-grid {
+      display:grid; grid-template-columns:auto 1fr; gap:4px 16px;
+      font-family:monospace;
+    }
+    .pk { color:var(--muted); }
+    .pv { color:var(--text); font-weight:600; }
+
+    /* Render */
+    .pd-render-wrap {
+      background:#1a1a2e; border:1px solid var(--border); border-radius:12px;
+      padding:20px 16px 12px; margin-bottom:12px;
+    }
+    .wardrobe-svg { width:100%; max-width:420px; display:block; margin:0 auto; }
+    .render-caption { font-size:11px; color:var(--muted); text-align:center; margin-top:8px; }
+    .render-actions { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:4px; }
+    .render-btn {
+      padding:7px 14px; border-radius:8px; font-size:12px; font-weight:600;
+      cursor:pointer; border:1px solid var(--border); background:transparent;
+      color:var(--muted); transition:all .2s; font-family:inherit;
+    }
+    .render-btn.active, .render-btn:hover {
+      border-color:var(--brand); color:var(--brand);
+      background:rgba(255,200,0,0.07);
+    }
+    .approved-badge { transition: opacity 0.5s ease; }
+
+    /* Quote doc */
+    .quote-doc {
+      background:#fff; color:#1a1a1a; border-radius:12px;
+      padding:20px; margin-bottom:16px; font-size:13px;
+    }
+    .quote-header { display:flex; justify-content:space-between; margin-bottom:12px; align-items:flex-start; }
+    .quote-business { font-size:15px; font-weight:800; color:#111; }
+    .quote-detail { font-size:11px; color:#777; margin-top:2px; }
+    .quote-ref { font-size:13px; font-weight:700; color:#333; text-align:right; }
+    .quote-date { font-size:11px; color:#888; text-align:right; }
+    .quote-client { font-size:12px; color:#555; border-top:1px solid #eee; padding-top:10px; margin-bottom:10px; }
+    .quote-client span { font-weight:700; color:#333; margin-right:6px; }
+    .quote-title-row { font-weight:700; color:#111; margin-bottom:12px; font-size:14px; }
+    .quote-table { width:100%; border-collapse:collapse; font-size:12px; }
+    .quote-table th { text-align:left; padding:5px 6px; font-size:10px; text-transform:uppercase; letter-spacing:.5px; color:#888; border-bottom:1px solid #ddd; }
+    .quote-table td { padding:6px 6px; border-bottom:1px solid #f0f0f0; color:#333; }
+    .quote-table td:nth-child(2), .quote-table td:nth-child(3), .quote-table td:nth-child(4) { text-align:right; white-space:nowrap; }
+    .quote-table tr.separator td { font-weight:700; color:#111; border-top:1px solid #ddd; background:#f9f9f9; }
+    .quote-totals { border-top:2px solid #ddd; margin-top:8px; padding-top:8px; }
+    .qt-row { display:flex; justify-content:space-between; font-size:13px; padding:3px 6px; color:#444; }
+    .qt-row.total { font-size:16px; font-weight:800; color:#111; padding-top:6px; }
+    .quote-valid { font-size:11px; color:#999; margin-top:8px; padding-top:8px; border-top:1px solid #f0f0f0; }
+
+    /* Merchant list */
+    .merchant-list { background:var(--mid); border:1px solid var(--border); border-radius:10px; padding:14px; }
+    .merchant-label { font-size:12px; font-weight:700; color:var(--text); margin-bottom:10px; }
+    .merchant-item { display:flex; align-items:center; gap:8px; padding:6px 0; border-bottom:1px solid var(--border); font-size:13px; }
+    .merchant-item:last-child { border-bottom:none; }
+    .merchant-item>span:first-child { font-weight:600; color:var(--text); min-width:140px; }
+    .m-items { color:var(--muted); font-size:12px; flex:1; }
+    .m-price { font-weight:700; color:var(--brand); font-size:13px; white-space:nowrap; }
+
+    /* Diff */
+    .iter-diff { background:var(--mid); border:1px solid var(--border); border-radius:10px; padding:16px; margin:16px 0; }
+    .iter-diff-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--brand); margin-bottom:12px; }
+    .iter-diff-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .id-item { background:rgba(0,0,0,0.2); border-radius:8px; padding:10px 12px; }
+    .id-key { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; color:var(--muted); margin-bottom:6px; }
+    .id-old { font-size:12px; color:var(--muted); text-decoration:line-through; margin-bottom:4px; }
+    .id-new { font-size:12px; font-weight:600; color:var(--text); }
+    .id-up { color:#10B981; }
+    .id-delta { display:inline-block; margin-left:6px; font-size:11px; background:rgba(16,185,129,0.15); color:#10B981; padding:1px 6px; border-radius:4px; }
+
+    /* Loop */
+    .iter-loop { background:rgba(0,0,0,0.15); border:1px solid var(--border); border-radius:10px; padding:16px; margin-top:12px; }
+    .iter-loop-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin-bottom:12px; text-align:center; }
+    .iter-loop-steps { display:flex; align-items:center; justify-content:center; gap:6px; flex-wrap:wrap; }
+    .ils { display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px 10px; background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:8px; min-width:64px; font-size:20px; }
+    .ils span { font-size:10px; color:var(--muted); text-align:center; }
+    .ils-arrow { color:var(--brand); font-size:16px; }
+    .iter-time { text-align:center; font-size:11px; color:var(--muted); margin-top:10px; }
+
+    @media(max-width:480px) {
+      .iter-diff-grid { grid-template-columns:1fr; }
+      .iter-loop-steps { gap:4px; }
+      .ils { min-width:52px; padding:6px 8px; }
     }
   </style>
 </head>
@@ -627,23 +646,265 @@
   </div>
 </section>
 
+
+<!-- ═══════ FULL PIPELINE DEMO ═══════ -->
 <section class="demo-section" id="demo">
   <div class="section-label">See it in action</div>
-  <h2 style="font-size:clamp(26px,6vw,40px);font-weight:900;letter-spacing:-1.5px;color:var(--white);margin-bottom:32px;line-height:1.1;">Quote.<br />From room to road<br /><em style="font-style:normal;color:var(--brand)">in under 60 seconds.</em></h2>
-  <div class="demo-phone" data-demo="quote">
-    <div class="demo-bar">
-      <div class="demo-avatar" style="background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);">💰</div>
-      <div>
-        <div class="demo-name">Quote</div>
-        <div class="demo-status">● Online</div>
+  <h2 class="demo-heading">From site visit to signed quote.<br /><em>In one conversation.</em></h2>
+
+  <div class="pipeline-demo">
+    <!-- Tabs -->
+    <div class="pd-tabs" role="tablist">
+      <button class="pd-tab active" data-tab="voice" role="tab">🎙️ 1. Voice → Spec</button>
+      <button class="pd-tab" data-tab="sketch" role="tab">🎨 2. Sketch</button>
+      <button class="pd-tab" data-tab="quote" role="tab">💰 3. Quote</button>
+      <button class="pd-tab" data-tab="iterate" role="tab">🔄 4. Iterate</button>
+    </div>
+
+    <!-- Panel: Voice -->
+    <div class="pd-panel active" data-panel="voice">
+      <div class="pd-step-label">Step 1</div>
+      <h3 class="pd-panel-title">Blueprint captures the job by voice</h3>
+      <p class="pd-panel-desc">The tradesperson speaks naturally on site. Blueprint asks follow-up questions and extracts every parameter — dimensions, materials, client preferences — before a single measurement is written down.</p>
+      <div class="pd-chat" id="chat-voice">
+        <!-- messages injected by JS -->
+      </div>
+      <div class="pd-params" id="params-box" style="display:none">
+        <div class="pd-params-label">Extracted parameters</div>
+        <div class="pd-params-grid">
+          <span class="pk">height</span><span class="pv">2100mm</span>
+          <span class="pk">width</span><span class="pv">1800mm</span>
+          <span class="pk">depth</span><span class="pv">600mm</span>
+          <span class="pk">doors</span><span class="pv">mirrored sliding</span>
+          <span class="pk">carcass</span><span class="pv">white MDF</span>
+          <span class="pk">shelves</span><span class="pv">3 internal</span>
+          <span class="pk">hardware</span><span class="pv">soft-close</span>
+          <span class="pk">client</span><span class="pv">Mrs Johnson</span>
+        </div>
       </div>
     </div>
-    <div class="demo-messages"></div>
-    <div class="typing"><span></span><span></span><span></span></div>
-    <button class="demo-replay">↺ Replay</button>
+
+    <!-- Panel: Sketch -->
+    <div class="pd-panel" data-panel="sketch">
+      <div class="pd-step-label">Step 2</div>
+      <h3 class="pd-panel-title">Sketch renders it in the room — live</h3>
+      <p class="pd-panel-desc">Used with the customer present. Sketch generates a visual of the finished piece in their actual space. Design changes happen by voice. Client signs off before you leave.</p>
+      <div class="pd-render-wrap">
+        <svg class="wardrobe-svg" viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg">
+          <!-- Room background -->
+          <defs>
+            <linearGradient id="wallGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#d4cfc8"/>
+              <stop offset="100%" stop-color="#b8b4ad"/>
+            </linearGradient>
+            <linearGradient id="floorGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#8B7355"/>
+              <stop offset="100%" stop-color="#6B5A3E"/>
+            </linearGradient>
+            <linearGradient id="wardTop" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#E8E8E8"/>
+              <stop offset="100%" stop-color="#D0D0D0"/>
+            </linearGradient>
+            <linearGradient id="wardFront" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#F2F2F2"/>
+              <stop offset="100%" stop-color="#DADADA"/>
+            </linearGradient>
+            <linearGradient id="mirrorL" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#c8dce8" stop-opacity="0.9"/>
+              <stop offset="40%" stop-color="#e8f0f4" stop-opacity="0.7"/>
+              <stop offset="100%" stop-color="#b0c8d8" stop-opacity="0.8"/>
+            </linearGradient>
+            <linearGradient id="mirrorR" x1="1" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#c8dce8" stop-opacity="0.9"/>
+              <stop offset="40%" stop-color="#e8f0f4" stop-opacity="0.7"/>
+              <stop offset="100%" stop-color="#b0c8d8" stop-opacity="0.8"/>
+            </linearGradient>
+            <filter id="shadow">
+              <feDropShadow dx="4" dy="8" stdDeviation="6" flood-opacity="0.3"/>
+            </filter>
+          </defs>
+
+          <!-- Wall -->
+          <rect x="0" y="0" width="420" height="240" fill="url(#wallGrad)"/>
+          <!-- Floor -->
+          <rect x="0" y="240" width="420" height="60" fill="url(#floorGrad)"/>
+          <!-- Floor boards -->
+          <line x1="0" y1="255" x2="420" y2="255" stroke="#7a6a50" stroke-width="0.5" opacity="0.4"/>
+          <line x1="0" y1="270" x2="420" y2="270" stroke="#7a6a50" stroke-width="0.5" opacity="0.4"/>
+          <line x1="80" y1="240" x2="60" y2="300" stroke="#7a6a50" stroke-width="0.5" opacity="0.3"/>
+          <line x1="180" y1="240" x2="160" y2="300" stroke="#7a6a50" stroke-width="0.5" opacity="0.3"/>
+          <line x1="280" y1="240" x2="260" y2="300" stroke="#7a6a50" stroke-width="0.5" opacity="0.3"/>
+          <line x1="360" y1="240" x2="340" y2="300" stroke="#7a6a50" stroke-width="0.5" opacity="0.3"/>
+          <!-- Skirting -->
+          <rect x="0" y="235" width="420" height="8" fill="#ccc8c0" stroke="#bbb6ae" stroke-width="0.5"/>
+
+          <!-- Wardrobe carcass -->
+          <g filter="url(#shadow)">
+            <!-- Top panel (iso) -->
+            <polygon points="55,28 365,28 380,14 70,14" fill="url(#wardTop)" stroke="#C0C0C0" stroke-width="1"/>
+            <!-- Right side (iso) -->
+            <polygon points="365,28 380,14 380,238 365,240" fill="#D0D0D0" stroke="#C0C0C0" stroke-width="1"/>
+            <!-- Front face -->
+            <rect x="55" y="28" width="310" height="212" fill="url(#wardFront)" stroke="#C4C4C4" stroke-width="1"/>
+
+            <!-- Left mirror door -->
+            <rect x="58" y="31" width="151" height="206" fill="url(#mirrorL)" stroke="#B8B8B8" stroke-width="1" rx="1"/>
+            <!-- Mirror sheen left -->
+            <polygon points="58,31 100,31 75,90 58,80" fill="white" opacity="0.25"/>
+            <!-- Door track top -->
+            <rect x="58" y="31" width="151" height="4" fill="#B0B0B0" rx="1"/>
+            <!-- Door track bottom -->
+            <rect x="58" y="233" width="151" height="4" fill="#B0B0B0" rx="1"/>
+
+            <!-- Right mirror door -->
+            <rect x="211" y="31" width="151" height="206" fill="url(#mirrorR)" stroke="#B8B8B8" stroke-width="1" rx="1"/>
+            <!-- Mirror sheen right -->
+            <polygon points="362,31 320,31 345,90 362,80" fill="white" opacity="0.25"/>
+            <!-- Door track top -->
+            <rect x="211" y="31" width="151" height="4" fill="#B0B0B0" rx="1"/>
+            <!-- Door track bottom -->
+            <rect x="211" y="233" width="151" height="4" fill="#B0B0B0" rx="1"/>
+
+            <!-- Centre divider -->
+            <rect x="208" y="28" width="4" height="212" fill="#C8C8C8"/>
+
+            <!-- Plinth -->
+            <rect x="65" y="240" width="300" height="10" fill="#D8D8D8" stroke="#C0C0C0" stroke-width="0.5" rx="1"/>
+          </g>
+
+          <!-- Dimension lines -->
+          <line x1="40" y1="28" x2="40" y2="240" stroke="#555" stroke-width="1" stroke-dasharray="3,2" opacity="0.6"/>
+          <line x1="36" y1="28" x2="44" y2="28" stroke="#555" stroke-width="1" opacity="0.6"/>
+          <line x1="36" y1="240" x2="44" y2="240" stroke="#555" stroke-width="1" opacity="0.6"/>
+          <text x="28" y="140" fill="#444" font-size="9" font-family="monospace" text-anchor="middle" transform="rotate(-90,28,140)">2100mm</text>
+
+          <line x1="55" y1="256" x2="365" y2="256" stroke="#555" stroke-width="1" stroke-dasharray="3,2" opacity="0.6"/>
+          <line x1="55" y1="252" x2="55" y2="260" stroke="#555" stroke-width="1" opacity="0.6"/>
+          <line x1="365" y1="252" x2="365" y2="260" stroke="#555" stroke-width="1" opacity="0.6"/>
+          <text x="210" y="268" fill="#444" font-size="9" font-family="monospace" text-anchor="middle">1800mm</text>
+
+          <!-- Labels -->
+          <text x="133" y="142" fill="rgba(0,0,0,0.35)" font-size="10" font-family="sans-serif" text-anchor="middle">Mirror</text>
+          <text x="287" y="142" fill="rgba(0,0,0,0.35)" font-size="10" font-family="sans-serif" text-anchor="middle">Mirror</text>
+
+          <!-- Approved badge -->
+          <g class="approved-badge" opacity="0">
+            <rect x="150" y="118" width="120" height="36" rx="8" fill="#10B981" opacity="0.92"/>
+            <text x="210" y="133" fill="white" font-size="11" font-weight="700" font-family="sans-serif" text-anchor="middle">✓ Client approved</text>
+            <text x="210" y="147" fill="rgba(255,255,255,0.8)" font-size="10" font-family="sans-serif" text-anchor="middle">Signed off digitally</text>
+          </g>
+        </svg>
+        <div class="render-caption">Sketch — mirrored sliding wardrobe, 2100×1800×600mm, white MDF</div>
+      </div>
+      <div class="render-actions">
+        <button class="render-btn active" onclick="setView('front')">Front view</button>
+        <button class="render-btn" onclick="setView('open')">Doors open</button>
+        <button class="render-btn" onclick="setView('approved')">Client approved ✓</button>
+      </div>
+    </div>
+
+    <!-- Panel: Quote -->
+    <div class="pd-panel" data-panel="quote">
+      <div class="pd-step-label">Step 3</div>
+      <h3 class="pd-panel-title">Quote — ready before you leave the street</h3>
+      <p class="pd-panel-desc">The moment design is agreed, Quote checks live merchant prices, applies your margin, and generates a branded PDF. Materials shopping list included, organised by where each item is cheapest.</p>
+
+      <div class="quote-doc">
+        <div class="quote-header">
+          <div class="quote-from">
+            <div class="quote-business">M. Fletcher Joinery</div>
+            <div class="quote-detail">mike@fletcherjoinery.co.uk · 07700 900 142</div>
+          </div>
+          <div class="quote-meta">
+            <div class="quote-ref">QT-2024-089</div>
+            <div class="quote-date">18 March 2026</div>
+          </div>
+        </div>
+        <div class="quote-client">
+          <span>For:</span> Mrs R. Johnson, 14 Maple Avenue, Bristol BS3 4LX
+        </div>
+        <div class="quote-title-row">Fitted Wardrobe — Master Bedroom</div>
+
+        <table class="quote-table">
+          <thead><tr><th>Item</th><th>Qty</th><th>Unit</th><th>Total</th></tr></thead>
+          <tbody>
+            <tr><td>18mm White MDF sheets (2440×1220)</td><td>4</td><td>£32.50</td><td>£130.00</td></tr>
+            <tr><td>Mirrored sliding door kit (1800mm)</td><td>1</td><td>£224.00</td><td>£224.00</td></tr>
+            <tr><td>Soft-close internal hardware set</td><td>1</td><td>£48.00</td><td>£48.00</td></tr>
+            <tr><td>Shelf supports + adjustable shelves ×3</td><td>1</td><td>£36.00</td><td>£36.00</td></tr>
+            <tr><td>Fixings, adhesive, edge banding</td><td>1</td><td>£22.00</td><td>£22.00</td></tr>
+            <tr class="separator"><td colspan="3">Materials subtotal</td><td>£460.00</td></tr>
+            <tr><td>Labour (1.5 days @ £280/day)</td><td>—</td><td>—</td><td>£420.00</td></tr>
+          </tbody>
+        </table>
+
+        <div class="quote-totals">
+          <div class="qt-row"><span>Subtotal</span><span>£880.00</span></div>
+          <div class="qt-row"><span>VAT (20%)</span><span>£176.00</span></div>
+          <div class="qt-row total"><span>Total</span><span>£1,056.00</span></div>
+        </div>
+        <div class="quote-valid">Valid for 30 days · Payment: 50% on order, 50% on completion</div>
+      </div>
+
+      <div class="merchant-list">
+        <div class="merchant-label">📦 Shopping list — cheapest by merchant</div>
+        <div class="merchant-item"><span>Howdens Bristol</span><span class="m-items">MDF sheets, edge banding</span><span class="m-price">£152</span></div>
+        <div class="merchant-item"><span>Travis Perkins</span><span class="m-items">Fixings, adhesive</span><span class="m-price">£22</span></div>
+        <div class="merchant-item"><span>Sliding Door Warehouse</span><span class="m-items">Mirror sliding kit</span><span class="m-price">£224</span></div>
+        <div class="merchant-item"><span>Screwfix</span><span class="m-items">Hardware, shelf supports</span><span class="m-price">£62</span></div>
+      </div>
+    </div>
+
+    <!-- Panel: Iterate -->
+    <div class="pd-panel" data-panel="iterate">
+      <div class="pd-step-label">Step 4</div>
+      <h3 class="pd-panel-title">Voice-driven changes. BOM updates instantly.</h3>
+      <p class="pd-panel-desc">The client asks for something different. The tradesperson speaks the change. Sketch regenerates. Quote recalculates. The whole loop takes seconds.</p>
+
+      <div class="pd-chat" id="chat-iterate"></div>
+
+      <div class="iter-diff">
+        <div class="iter-diff-label">What changed</div>
+        <div class="iter-diff-grid">
+          <div class="id-item">
+            <div class="id-key">Door style</div>
+            <div class="id-old">Mirrored sliding</div>
+            <div class="id-new">Shaker painted (Farrow &amp; Ball No.26)</div>
+          </div>
+          <div class="id-item">
+            <div class="id-key">Internal layout</div>
+            <div class="id-old">3 shelves</div>
+            <div class="id-new">Hanging rail + 2 shelves + shoe rack</div>
+          </div>
+          <div class="id-item">
+            <div class="id-key">Quote total</div>
+            <div class="id-old">£1,056</div>
+            <div class="id-new id-up">£1,284 <span class="id-delta">+£228</span></div>
+          </div>
+          <div class="id-item">
+            <div class="id-key">Lead time</div>
+            <div class="id-old">1.5 days</div>
+            <div class="id-new">2 days</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="iter-loop">
+        <div class="iter-loop-label">The iteration loop</div>
+        <div class="iter-loop-steps">
+          <div class="ils">🎙️<span>Voice change</span></div>
+          <div class="ils-arrow">→</div>
+          <div class="ils">🎨<span>Sketch updates</span></div>
+          <div class="ils-arrow">→</div>
+          <div class="ils">💰<span>Quote recalcs</span></div>
+          <div class="ils-arrow">→</div>
+          <div class="ils">📄<span>New PDF ready</span></div>
+        </div>
+        <div class="iter-time">~4 seconds end-to-end</div>
+      </div>
+    </div>
   </div>
 </section>
-
 <footer>
   <span class="logo">Trades<span style="color:var(--brand)">App</span></span>
   <p>Built for independent tradespeople. Starting with carpenters and joiners. Built in London.</p>
@@ -749,6 +1010,131 @@
   document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.demo-phone').forEach(initDemo);
   });
+})();
+</script>
+
+<script>
+(function(){
+  // ── Tab switching ────────────────────────────────────────
+  document.querySelectorAll('.pd-tab').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var t = btn.dataset.tab;
+      document.querySelectorAll('.pd-tab').forEach(function(b){ b.classList.remove('active'); });
+      document.querySelectorAll('.pd-panel').forEach(function(p){ p.classList.remove('active'); });
+      btn.classList.add('active');
+      var panel = document.querySelector('[data-panel="'+t+'"]');
+      if(panel) panel.classList.add('active');
+      if(t === 'voice' && !voiceDone) runChat('voice');
+      if(t === 'iterate' && !iterDone) runChat('iterate');
+    });
+  });
+
+  // ── Chat sequences ────────────────────────────────────────
+  var voiceScript = [
+    {r:'user', t:"Right, fitted wardrobe for the master bedroom. Alcove, floor to ceiling — about two one high. Two doors, mirrored sliding, white MDF carcass."},
+    {r:'ai',   n:'Blueprint', t:"Got it. How wide is the alcove? And what does she want inside — shelves, hanging, drawers?", d:1300},
+    {r:'user', t:"One eight wide, six hundred deep. Three internal shelves, soft-close. Client's Mrs Johnson."},
+    {r:'ai',   n:'Blueprint', t:"Perfect. Mirrored sliding doors, soft-close hardware, three adjustable shelves on 32mm centres. I'm generating Sketch now — takes a few seconds.", d:1600},
+    {r:'ai',   n:'Blueprint', t:"Done. Sketch has rendered it — she can see the wardrobe in her room on your phone. Ready for sign-off.", d:900},
+  ];
+  var iterScript = [
+    {r:'user', t:"Actually she's changed her mind on the mirrors. Wants painted shaker doors, Farrow and Ball. And can we do a hanging rail and a shoe rack at the bottom instead of the bottom shelf?"},
+    {r:'ai',   n:'Blueprint', t:"On it — switching to painted shaker doors, Farrow & Ball Mole's Breath No.26. Internal layout: full-height hanging rail, two upper shelves, shoe rack at base. Updating Sketch and Quote now…", d:1800},
+    {r:'ai',   n:'Quote', t:"Updated. New total: £1,284 inc VAT — up £228 for the shaker doors and extra labour. Door panels need priming and painting so lead time moves to 2 days. New PDF ready to send.", d:1200},
+  ];
+
+  var voiceDone = false, iterDone = false;
+
+  function runChat(which) {
+    var script = which === 'voice' ? voiceScript : iterScript;
+    var containerId = which === 'voice' ? 'chat-voice' : 'chat-iterate';
+    var container = document.getElementById(containerId);
+    if(!container) return;
+    container.innerHTML = '';
+
+    // Add typing indicator
+    var typingEl = document.createElement('div');
+    typingEl.className = 'pc-typing';
+    typingEl.innerHTML = '<span></span><span></span><span></span>';
+    container.appendChild(typingEl);
+
+    var i = 0;
+    function next() {
+      if(i >= script.length){
+        typingEl.classList.remove('show');
+        if(which === 'voice'){ voiceDone = true; showParams(); }
+        else iterDone = true;
+        return;
+      }
+      var s = script[i++];
+      if(s.r === 'ai'){
+        typingEl.classList.add('show');
+        typingEl.scrollIntoView({behavior:'smooth',block:'nearest'});
+        container.appendChild(typingEl); // keep at end
+        setTimeout(function(){
+          typingEl.classList.remove('show');
+          addMsg(container, s, typingEl, function(){ setTimeout(next, 500); });
+        }, s.d || 1300);
+      } else {
+        addMsg(container, s, typingEl, function(){ setTimeout(next, 300); });
+      }
+    }
+    setTimeout(next, 400);
+  }
+
+  function addMsg(container, s, typingEl, cb) {
+    var el = document.createElement('div');
+    el.className = 'pc-msg ' + s.r;
+    var inner = '<div class="pc-bubble">';
+    if(s.r === 'ai') inner += '<div class="pc-who">'+(s.n||'AI')+'</div>';
+    inner += s.t + '</div>';
+    el.innerHTML = inner;
+    container.insertBefore(el, typingEl);
+    container.appendChild(typingEl);
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        el.classList.add('vis');
+        el.scrollIntoView({behavior:'smooth',block:'nearest'});
+        if(cb) setTimeout(cb, 300);
+      });
+    });
+  }
+
+  function showParams() {
+    var p = document.getElementById('params-box');
+    if(p){ p.style.display='block'; p.style.opacity=0; setTimeout(function(){ p.style.transition='opacity .5s'; p.style.opacity=1; }, 100); }
+  }
+
+  // ── Sketch view switcher ─────────────────────────────────
+  window.setView = function(v) {
+    document.querySelectorAll('.render-btn').forEach(function(b){ b.classList.remove('active'); });
+    event.target.classList.add('active');
+    var badge = document.querySelector('.approved-badge');
+    // open doors: slide-apart effect via CSS transform on the two door rects
+    var lDoor = document.querySelector('.wardrobe-svg rect[fill="url(#mirrorL)"]');
+    var rDoor = document.querySelector('.wardrobe-svg rect[fill="url(#mirrorR)"]');
+    if(v === 'open'){
+      if(lDoor) lDoor.setAttribute('transform','translate(-60,0)');
+      if(rDoor) rDoor.setAttribute('transform','translate(60,0)');
+      if(badge) badge.setAttribute('opacity','0');
+    } else {
+      if(lDoor) lDoor.removeAttribute('transform');
+      if(rDoor) rDoor.removeAttribute('transform');
+      if(badge) badge.setAttribute('opacity', v==='approved'?'1':'0');
+    }
+  };
+
+  // ── Auto-start voice chat when section visible ───────────
+  var section = document.getElementById('demo');
+  if(section){
+    var obs = new IntersectionObserver(function(entries){
+      if(entries[0].isIntersecting && !voiceDone){
+        obs.disconnect();
+        runChat('voice');
+      }
+    }, {threshold:0.3});
+    obs.observe(section);
+  }
 })();
 </script>
 </body>
