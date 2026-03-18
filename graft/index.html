@@ -676,10 +676,13 @@
     </div>
 
     <!-- Messages -->
-    <div class="chat-messages" id="chat-msgs" onclick="if(!window._chatStarted){window._chatStarted=true;startChat();}">
+    <div class="chat-messages" id="chat-msgs">
       <div class="chat-date">Today</div>
-      <div id="chat-start-prompt" style="display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;gap:12px;padding:40px 20px;text-align:center;">
-        <div style="font-size:40px;animation:vdot 1.5s ease infinite">🎙️</div>
+      <div id="chat-start-prompt" style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:16px;padding:40px 20px;text-align:center;">
+        <div style="font-size:48px">🎙️</div>
+        <div style="font-size:14px;color:#555;line-height:1.6;">Watch a live job play out</div>
+        <button onclick="window._chatStarted=true;startChat();" style="background:var(--brand);color:#000;border:none;padding:13px 28px;border-radius:100px;font-size:15px;font-weight:800;cursor:pointer;font-family:inherit;">▶ Start demo</button>
+      </div>
         <div style="font-size:14px;color:#555;line-height:1.6;">Tap to watch a live job<br />play out in real time</div>
       </div>
       <!-- messages injected by JS -->
@@ -706,7 +709,7 @@
 
     <!-- Replay -->
     <div class="chat-replay">
-      <button id="chat-replay-btn" style="display:none" onclick="startChat()">↺ Replay</button>
+      <button id="chat-replay-btn" style="display:none;font-family:inherit" onclick="startChat()">↺ Replay</button>
     </div>
   </div>
 </section>
@@ -951,16 +954,7 @@
   function raf(fn){ requestAnimationFrame(function(){ requestAnimationFrame(fn); }); }
   function scrollBottom(){ msgBox.scrollTop = msgBox.scrollHeight; }
 
-  // Auto-start on scroll into view
-  document.addEventListener('DOMContentLoaded', function(){
-    init();
-    var obs = new IntersectionObserver(function(entries){
-      if(entries[0].isIntersecting && !running){ obs.disconnect(); startChat(); }
-    }, {threshold:0.1});
-  // Fallback: auto-start after 3s if still not triggered
-  setTimeout(function(){ if(!window._chatStarted){ window._chatStarted=true; startChat(); } }, 3000);
-    var demo = document.getElementById('demo');
-    if(demo) obs.observe(demo);
+  // Auto-start removed — user taps Play button
   });
 })();
 </script>
