@@ -478,6 +478,78 @@
     .chat-send-btn { transition: background .2s, transform .1s; }
     .chat-send-btn.recording { background:#ff4444; animation:mbtn 1s ease infinite; }
     @keyframes mbtn { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
+
+    /* ── CHAT LIST VIEW ── */
+    .chatlist-phone {
+      background:#111;
+      border-radius:32px;
+      border:1.5px solid #2a2a2a;
+      overflow:hidden;
+      box-shadow:0 40px 100px rgba(0,0,0,0.7);
+      margin-bottom:16px;
+    }
+    .cl-header {
+      background:#1a1a1a;
+      border-bottom:1px solid #222;
+      padding:14px 16px 10px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .cl-title { font-size:20px; font-weight:800; color:#fff; }
+    .cl-icons { display:flex; gap:14px; font-size:18px; color:#888; }
+    .cl-section { padding:8px 16px 4px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:#555; }
+    .cl-item {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:10px 16px;
+      border-bottom:1px solid #1a1a1a;
+      cursor:pointer;
+    }
+    .cl-item:last-child { border-bottom:none; }
+    .cl-av {
+      width:44px; height:44px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      font-size:20px; flex-shrink:0;
+      position:relative;
+    }
+    .cl-av .cl-online {
+      position:absolute; bottom:1px; right:1px;
+      width:10px; height:10px; border-radius:50%;
+      background:#4CAF50; border:2px solid #111;
+    }
+    .cl-info { flex:1; min-width:0; }
+    .cl-name { font-size:15px; font-weight:600; color:#e0e0e0; }
+    .cl-preview { font-size:13px; color:#555; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:1px; }
+    .cl-preview em { font-style:normal; color:#888; }
+    .cl-meta { text-align:right; }
+    .cl-time { font-size:11px; color:#555; white-space:nowrap; }
+    .cl-badge {
+      background:var(--brand);
+      color:#000;
+      font-size:10px;
+      font-weight:800;
+      padding:2px 6px;
+      border-radius:10px;
+      margin-top:4px;
+      display:inline-block;
+    }
+    .cl-job-av {
+      width:44px; height:44px; border-radius:12px;
+      display:flex; align-items:center; justify-content:center;
+      font-size:18px; flex-shrink:0;
+      background:#1a2a1a; border:1px solid #2a3a2a;
+    }
+    .cl-caption {
+      text-align:center;
+      font-size:12px;
+      color:#444;
+      padding:12px 16px;
+      line-height:1.6;
+      border-top:1px solid #1a1a1a;
+    }
+    .cl-caption strong { color:#666; }
   </style>
 </head>
 <body>
@@ -512,6 +584,82 @@
   <div class="section-label">See it in action</div>
   <div class="section-h2">Your team in the room.<br /><em>Every job.</em></div>
 
+  <!-- Chat list (above the group chat) -->
+  <div class="chatlist-phone">
+    <div style="background:#0a0a0a;padding:10px 20px 6px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#888;">
+      <span style="font-weight:600;color:#ccc;">09:41</span>
+      <div style="display:flex;gap:6px;opacity:.7;"><span>●●●</span><span>WiFi</span><span>🔋</span></div>
+    </div>
+    <div class="cl-header">
+      <div class="cl-title">Graft</div>
+      <div class="cl-icons"><span>🔍</span><span>⋮</span></div>
+    </div>
+
+    <div class="cl-section">Your team — 1:1</div>
+
+    <div class="cl-item">
+      <div class="cl-av ga-blueprint">📐<div class="cl-online"></div></div>
+      <div class="cl-info">
+        <div class="cl-name">Blueprint</div>
+        <div class="cl-preview"><em>Blueprint:</em> Your oak veneer profile is saved. Ready for your next job.</div>
+      </div>
+      <div class="cl-meta"><div class="cl-time">09:12</div></div>
+    </div>
+
+    <div class="cl-item">
+      <div class="cl-av ga-sketch">🎨<div class="cl-online"></div></div>
+      <div class="cl-info">
+        <div class="cl-name">Sketch</div>
+        <div class="cl-preview"><em>Sketch:</em> Tap to generate a render for your next visit.</div>
+      </div>
+      <div class="cl-meta"><div class="cl-time">Yesterday</div></div>
+    </div>
+
+    <div class="cl-item">
+      <div class="cl-av ga-quote">💰<div class="cl-online"></div></div>
+      <div class="cl-info">
+        <div class="cl-name">Quote</div>
+        <div class="cl-preview"><em>Quote:</em> Davies kitchen quote sent — awaiting sign-off.</div>
+      </div>
+      <div class="cl-meta"><div class="cl-time">Mon</div><div class="cl-badge">1</div></div>
+    </div>
+
+    <div class="cl-section">Jobs</div>
+
+    <div class="cl-item">
+      <div class="cl-job-av">🏠</div>
+      <div class="cl-info">
+        <div class="cl-name">Johnson — Master Wardrobe</div>
+        <div class="cl-preview"><em>Quote:</em> £1,056 sent. Awaiting deposit.</div>
+      </div>
+      <div class="cl-meta"><div class="cl-time">09:38</div><div class="cl-badge">New</div></div>
+    </div>
+
+    <div class="cl-item">
+      <div class="cl-job-av">🚿</div>
+      <div class="cl-info">
+        <div class="cl-name">Davies — Bathroom Vanity</div>
+        <div class="cl-preview"><em>You:</em> Can we move the shelf down 50mm?</div>
+      </div>
+      <div class="cl-meta"><div class="cl-time">Mon</div></div>
+    </div>
+
+    <div class="cl-item">
+      <div class="cl-job-av">📺</div>
+      <div class="cl-info">
+        <div class="cl-name">Patel — Media Unit</div>
+        <div class="cl-preview"><em>Quote:</em> Quote accepted. Materials ordered.</div>
+      </div>
+      <div class="cl-meta"><div class="cl-time">12 Mar</div></div>
+    </div>
+
+    <div class="cl-caption">
+      <strong>1:1 with each agent</strong> to set preferences · <strong>New chat per job</strong> — every quote, render and change, in one thread
+    </div>
+  </div>
+
+  <div style="text-align:center;font-size:13px;color:var(--muted);margin-bottom:24px;">↓ Open a job chat</div>
+
   <div class="chat-phone">
     <!-- Status bar -->
     <div class="chat-statusbar">
@@ -535,8 +683,12 @@
     </div>
 
     <!-- Messages -->
-    <div class="chat-messages" id="chat-msgs">
+    <div class="chat-messages" id="chat-msgs" onclick="if(!window._chatStarted){window._chatStarted=true;startChat();}">
       <div class="chat-date">Today</div>
+      <div id="chat-start-prompt" style="display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;gap:12px;padding:40px 20px;text-align:center;">
+        <div style="font-size:40px;animation:vdot 1.5s ease infinite">🎙️</div>
+        <div style="font-size:14px;color:#555;line-height:1.6;">Tap to watch a live job<br />play out in real time</div>
+      </div>
       <!-- messages injected by JS -->
       <div class="typing-row" id="typing-indicator">
         <div class="agent-av ga-blueprint">📐</div>
@@ -555,7 +707,7 @@
         </div>
         <span class="voice-label">Listening…</span>
       </div>
-      <div class="chat-input-box" contenteditable="false" style="color:#444">Voice-driven — tap mic to speak</div>
+      <div class="chat-input-box" contenteditable="false" style="color:#444">Tap anywhere to start demo</div>
       <button class="chat-send-btn">🎙️</button>
     </div>
 
@@ -805,7 +957,9 @@
     init();
     var obs = new IntersectionObserver(function(entries){
       if(entries[0].isIntersecting && !running){ obs.disconnect(); startChat(); }
-    }, {threshold:0.3});
+    }, {threshold:0.1});
+  // Fallback: auto-start after 3s if still not triggered
+  setTimeout(function(){ if(!window._chatStarted){ window._chatStarted=true; startChat(); } }, 3000);
     var demo = document.getElementById('demo');
     if(demo) obs.observe(demo);
   });
